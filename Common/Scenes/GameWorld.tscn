@@ -1,0 +1,98 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Common/Scenes/GameWorld.gd" type="Script" id=1]
+[ext_resource path="res://Common/Instances/Entities/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Common/Scenes/WallDespawner.gd" type="Script" id=3]
+[ext_resource path="res://Common/Instances/Env/ScrollingWalls.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Common/Instances/Env/PlatformManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Textures/WaterOverlay.png" type="Texture" id=6]
+[ext_resource path="res://Common/Instances/UI/MenuMain.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Textures/Background.png" type="Texture" id=8]
+[ext_resource path="res://Common/Instances/UI/RunEndMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Common/Res/UI/Fonts/Swash_32.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Assets/Audio/OceanSound.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Common/Instances/UI/OptionsMenu.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Common/Res/UI/Fonts/Swash_16.tres" type="DynamicFont" id=13]
+[ext_resource path="res://Common/Instances/UI/HowToPlayMenu.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Common/Instances/UI/LeaderBoardMenu.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Common/Instances/UI/PauseMenu.tscn" type="PackedScene" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 800, 10 )
+
+[node name="GameWorld" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="Background" type="Sprite" parent="."]
+z_index = -1
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1536, 1762 )
+
+[node name="WaterOverlay" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.47451 )
+z_index = 1
+texture = ExtResource( 6 )
+
+[node name="ScrollingWalls" parent="." instance=ExtResource( 4 )]
+z_index = 3
+
+[node name="PlatformManager" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 1216 )
+z_index = 5
+
+[node name="WallDespawner" type="Area2D" parent="."]
+position = Vector2( 0, -1024 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 3 )
+
+[node name="Collider" type="CollisionShape2D" parent="WallDespawner"]
+shape = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource( 7 )]
+
+[node name="RunEndMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
+visible = false
+
+[node name="Depth" type="Label" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 41.0
+custom_fonts/font = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource( 12 )]
+visible = false
+
+[node name="Credit" type="Label" parent="CanvasLayer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -21.0
+margin_right = 128.0
+custom_fonts/font = ExtResource( 13 )
+text = "by SonicPixelation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HowToPlayMenu" parent="CanvasLayer" instance=ExtResource( 14 )]
+visible = false
+
+[node name="LeaderBoardMenu" parent="CanvasLayer" instance=ExtResource( 15 )]
+visible = false
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 16 )]
+visible = false
+
+[node name="WaterSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = 3.0
+autoplay = true
+
+[connection signal="area_entered" from="WallDespawner" to="WallDespawner" method="_on_WallDespawner_area_entered"]

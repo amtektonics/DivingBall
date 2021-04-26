@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Common/Res/UI/Themes/DefaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Common/Instances/UI/HowToPlayMenu.gd" type="Script" id=2]
+
+[node name="HowToPlayMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Center"]
+margin_left = 500.0
+margin_top = 150.0
+margin_right = 1100.0
+margin_bottom = 750.0
+rect_min_size = Vector2( 600, 600 )
+
+[node name="Title" type="Label" parent="Center/Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -83.0
+margin_top = 21.0
+margin_right = 83.0
+margin_bottom = 62.0
+text = "How to play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body" type="RichTextLabel" parent="Center/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -224.0
+margin_top = -215.0
+margin_right = 226.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 450, 400 )
+text = "Click and drag to fling your diving ball in any direction.
+
+Try not to hit the platforms.
+
+how deep can you go?
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackBtn" type="Button" parent="Center/Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.5
+margin_top = -105.0
+margin_right = 100.5
+margin_bottom = -32.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Center/Panel/BackBtn" to="." method="_on_BackBtn_pressed"]

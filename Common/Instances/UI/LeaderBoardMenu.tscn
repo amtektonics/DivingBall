@@ -1,0 +1,127 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Common/Res/UI/Themes/DefaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Common/Instances/UI/LeaderBoardMenu.gd" type="Script" id=2]
+
+[node name="LeaderBoardMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Center"]
+margin_left = 300.0
+margin_top = 100.0
+margin_right = 1300.0
+margin_bottom = 800.0
+rect_min_size = Vector2( 1000, 700 )
+
+[node name="Title" type="Label" parent="Center/Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -93.0
+margin_top = 30.0
+margin_right = 93.0
+margin_bottom = 72.0
+text = "Leaderboards"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Center/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -264.0
+margin_right = 350.0
+margin_bottom = 161.0
+rect_min_size = Vector2( 700, 425 )
+rect_clip_content = true
+custom_constants/separation = 96
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Index" type="VBoxContainer" parent="Center/Panel/HBoxContainer"]
+margin_left = 136.0
+margin_right = 214.0
+margin_bottom = 425.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Label" parent="Center/Panel/HBoxContainer/Index"]
+margin_right = 78.0
+margin_bottom = 41.0
+text = "Place"
+align = 1
+
+[node name="Name" type="VBoxContainer" parent="Center/Panel/HBoxContainer"]
+margin_left = 310.0
+margin_right = 393.0
+margin_bottom = 425.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Label" parent="Center/Panel/HBoxContainer/Name"]
+margin_right = 83.0
+margin_bottom = 41.0
+text = "Name"
+align = 1
+
+[node name="Score" type="VBoxContainer" parent="Center/Panel/HBoxContainer"]
+margin_left = 489.0
+margin_right = 564.0
+margin_bottom = 425.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Center/Panel/HBoxContainer/Score"]
+margin_right = 75.0
+margin_bottom = 41.0
+text = "Score"
+align = 1
+
+[node name="BackBtn" type="Button" parent="Center/Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.5
+margin_top = -106.0
+margin_right = 100.5
+margin_bottom = -33.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClearBtn" type="Button" parent="Center/Panel"]
+margin_left = 75.0
+margin_top = 36.0
+margin_right = 454.0
+margin_bottom = 109.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Clear Leaderboard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Center/Panel/BackBtn" to="." method="_on_BackBtn_pressed"]
+[connection signal="pressed" from="Center/Panel/ClearBtn" to="." method="_on_ClearBtn_pressed"]
