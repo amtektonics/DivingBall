@@ -32,7 +32,6 @@ var _stopped = false
 func _ready():
 	WallManager.update_scroll_speed(scroll_speed)
 	PlatformManager.update_scroll_speed(scroll_speed)
-	WallManager.populate_walls()
 	stop()
 	WallManager.start()
 	LeaderBoardManager.load_leaderboard()

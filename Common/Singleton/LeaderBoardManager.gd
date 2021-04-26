@@ -16,6 +16,8 @@ func load_leaderboard():
 		else:
 			_leaderboard = []
 		_clean_board()
+	else:
+		_leaderboard = []
 
 func save_leaderboard():
 	var err = f.open(lb_file, File.WRITE)
