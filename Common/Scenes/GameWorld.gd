@@ -1,10 +1,10 @@
 extends Node
 
-export var starting_speed = 200.00
+export var starting_speed = 400.00
 
 var scroll_speed = starting_speed
 
-var speed_change = 0.05
+var speed_change = 0.01
 
 var total_distance = 0.0
 
