@@ -6,3 +6,6 @@ func _on_BackBtn_pressed():
 	self.visible = false
 	GameWorld.show_main_menu()
 
+
+func awake():
+	pass

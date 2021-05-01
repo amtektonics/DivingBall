@@ -6,6 +6,9 @@ onready var NameEdit = $Center/Panel/NameEdit
 
 var _depth = 0
 
+func awake():
+	pass
+
 func set_depth(depth:int):
 	_depth = depth
 	$Center/Panel/DepthText.text = str(depth) + " meters"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Common/Res/UI/Themes/DefaultTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/UI/Logo.png" type="Texture" id=2]
 [ext_resource path="res://Common/Instances/UI/MenuMain.gd" type="Script" id=3]
+[ext_resource path="res://Assets/UI/SoundIcon.png" type="Texture" id=4]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -22,9 +23,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Center"]
 margin_left = 649.0
-margin_top = 259.0
+margin_top = 298.0
 margin_right = 951.0
-margin_bottom = 640.0
+margin_bottom = 602.0
 
 [node name="PlayBtn" type="Button" parent="Center/VBoxContainer"]
 margin_right = 302.0
@@ -44,15 +45,16 @@ margin_bottom = 227.0
 text = "Leaderboard"
 
 [node name="OptionsBtn" type="Button" parent="Center/VBoxContainer"]
+visible = false
 margin_top = 231.0
 margin_right = 302.0
 margin_bottom = 304.0
 text = "Options"
 
 [node name="ExitBtn" type="Button" parent="Center/VBoxContainer"]
-margin_top = 308.0
+margin_top = 231.0
 margin_right = 302.0
-margin_bottom = 381.0
+margin_bottom = 304.0
 text = "Exit"
 
 [node name="Title" type="TextureRect" parent="."]
@@ -64,9 +66,39 @@ margin_right = 50.0
 margin_bottom = 161.0
 rect_scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundCheckBox" type="CheckBox" parent="."]
+modulate = Color( 1, 1, 1, 0.607843 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -128.0
+margin_top = 65.0
+margin_right = -64.0
+margin_bottom = 129.0
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundIcon" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.607843 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -128.0
+margin_top = 1.0
+margin_right = -64.0
+margin_bottom = 65.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Center/VBoxContainer/PlayBtn" to="." method="_on_PlayBtn_pressed"]
 [connection signal="pressed" from="Center/VBoxContainer/HowToPlayBtn" to="." method="_on_HowToPlayBtn_pressed"]
 [connection signal="pressed" from="Center/VBoxContainer/LeaderBoardsBtn" to="." method="_on_LeaderBoardsBtn_pressed"]
 [connection signal="pressed" from="Center/VBoxContainer/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
 [connection signal="pressed" from="Center/VBoxContainer/ExitBtn" to="." method="_on_ExitBtn_pressed"]
+[connection signal="toggled" from="SoundCheckBox" to="." method="_on_SoundCheckBox_toggled"]

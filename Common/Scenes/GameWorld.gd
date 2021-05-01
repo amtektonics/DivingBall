@@ -53,6 +53,7 @@ func _physics_process(delta):
 		if(Input.is_action_just_pressed("PauseGame")):
 			stop()
 			PauseMenu.visible = true
+			PauseMenu.awake()
 			
 	
 
@@ -90,17 +91,21 @@ func show_run_end_menu():
 func show_main_menu():
 	WallManager.start()
 	MainMenu.visible = true
+	MainMenu.awake()
 
 func show_options():
 	OptionsMenu.visible = true
+	OptionsMenu.awake()
 
 
 func show_how_to_play():
 	HowToPlayMenu.visible = true
+	HowToPlayMenu.awake()
 
 func show_leaderboard():
 	LeaderBoardMenu.visible = true
 	LeaderBoardMenu.update_leaderboard()
+	LeaderBoardMenu.awake()
 
 func clean_scene():
 	pass

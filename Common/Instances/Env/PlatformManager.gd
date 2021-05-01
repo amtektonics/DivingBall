@@ -29,25 +29,30 @@ func _ready():
 
 var _distance_trip_value = 250
 func _physics_process(delta):
-	if(!_stopped):	
+	if(!_stopped):
 		if(platform_count < max_platforms):
+			var primary_spawn = 0
 			if(t % (60 * spawn_delay_primary) == 0):
 				var width = (randi() % 4) + 1
 				var height = (randi() % 3) + 1
-				
+								
 				var pos = get_position()
 				var xt = GameWorld.Player.get_position().x
 				xt = int(xt / 64) * 64
+				
 				if(abs(xt) > 768):
-					xt + ((sign(-xt) * ((width / 2) * 64)) - 64)
+					xt = xt + ((sign(-xt) * ((width / 2) * 64)) - 64)
 				set_position(Vector2(xt, pos.y))
-				spawn_platform(width, height);
+				
+				spawn_platform(width, height)
+				
+				primary_spawn = xt
 			
 			if(t % (60 * spawn_delay_secondary) == 0):
 				var width = (randi() % 4) + 1
 				var height = (randi() % 3) + 1
 				var pos = get_position()
-				var xt = rand_range(-768, 768.0)
+				var xt = (primary_spawn + (64 * 8) % 1536) - 768
 				xt = int(xt / 64) * 64
 				set_position(Vector2(xt, pos.y))
 				spawn_platform(width, height)

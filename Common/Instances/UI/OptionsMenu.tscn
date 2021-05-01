@@ -27,22 +27,6 @@ margin_right = 1000.0
 margin_bottom = 650.0
 rect_min_size = Vector2( 400, 400 )
 
-[node name="CheckBox" type="CheckBox" parent="Center/Panel"]
-margin_left = -8.0
-margin_top = 48.0
-margin_right = 335.0
-margin_bottom = 208.0
-focus_mode = 0
-custom_fonts/font = ExtResource( 3 )
-shortcut_in_tooltip = false
-pressed = true
-enabled_focus_mode = 0
-text = "Sound Enabled"
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="HSlider" type="HSlider" parent="Center/Panel"]
 margin_left = 56.0
 margin_top = 184.0
@@ -92,6 +76,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="toggled" from="Center/Panel/CheckBox" to="." method="_on_CheckBox_toggled"]
 [connection signal="value_changed" from="Center/Panel/HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="Center/Panel/BackBtn" to="." method="_on_BackBtn_pressed"]

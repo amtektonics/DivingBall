@@ -2,6 +2,10 @@ extends Control
 
 onready var GameWorld = get_parent().get_parent()
 
+func awake():
+	pass
+
+
 func _on_CheckBox_toggled(button_pressed):
 	if(!button_pressed):
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)

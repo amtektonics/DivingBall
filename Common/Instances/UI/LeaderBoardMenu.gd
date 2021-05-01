@@ -44,6 +44,9 @@ func add_row(index:int, name:String, score:int):
 	NameColumn.add_child(nameLabel)
 	ScoreColumn.add_child(scoreLabel)
 	
+func awake():
+	pass
+
 
 func _on_BackBtn_pressed():
 	self.visible = false
