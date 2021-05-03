@@ -7,7 +7,7 @@
 [ext_resource path="res://Common/Instances/Env/PlatformManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Textures/WaterOverlay.png" type="Texture" id=6]
 [ext_resource path="res://Common/Instances/UI/MenuMain.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Assets/Textures/Background.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Textures/Background2.png" type="Texture" id=8]
 [ext_resource path="res://Common/Instances/UI/RunEndMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Common/Res/UI/Fonts/Swash_32.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Assets/Audio/OceanSound.ogg" type="AudioStream" id=11]
@@ -94,4 +94,5 @@ visible = false
 stream = ExtResource( 11 )
 volume_db = 3.0
 autoplay = true
+
 [connection signal="area_entered" from="WallDespawner" to="WallDespawner" method="_on_WallDespawner_area_entered"]

@@ -19,7 +19,7 @@ var _left_spawn = true
 var t = 0
 
 var spawn_delay_primary = 3
-var spawn_delay_secondary = 5
+var spawn_delay_secondary = 2
 
 var current_spawn_delay_primary = spawn_delay_primary
 var current_spawn_delay_secondary = spawn_delay_secondary
@@ -44,18 +44,26 @@ func _physics_process(delta):
 					xt = xt + ((sign(-xt) * ((width / 2) * 64)) - 64)
 				set_position(Vector2(xt, pos.y))
 				
-				spawn_platform(width, height)
+				spawn_platform(width, height, "n")
 				
 				primary_spawn = xt
+			else:
+				primary_spawn = GameWorld.Player.get_position().x
+				primary_spawn = int(primary_spawn / 64) * 64
 			
 			if(t % (60 * spawn_delay_secondary) == 0):
 				var width = (randi() % 4) + 1
 				var height = (randi() % 3) + 1
 				var pos = get_position()
-				var xt = (primary_spawn + (64 * 8) % 1536) - 768
+				var xt = ((primary_spawn + 768) + (64 * (randi() % 20))) % 1536  - 768
 				xt = int(xt / 64) * 64
+				if(xt <= (-768 + (width * 64))):
+					xt += ((width * 64) / 2)
+					
+				if(xt >= (768 - (width * 64))):
+					xt -= ((width * 64) / 2)
 				set_position(Vector2(xt, pos.y))
-				spawn_platform(width, height)
+				spawn_platform(width, height, "r")
 				_left_spawn = false
 		t += 1
 
@@ -77,12 +85,13 @@ func reset():
 	current_spawn_delay_primary = spawn_delay_primary
 	current_spawn_delay_secondary = spawn_delay_secondary
 
-func spawn_platform(width:int, height:int):
+func spawn_platform(width:int, height:int, type:String):
 	var platform = _playform_scene.instance()
 	platform.add_tiles(width, height)
 	platform.move_speed = _scroll_speed
 	platform.moving = true
 	platform.set_position(get_position())
+	platform.set_name("platform_"+ type)
 	get_parent().add_child(platform)
 	platforms.append(platform)
 	platform_count += 1

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Sprites/Sub.png" type="Texture" id=1]
 [ext_resource path="res://Common/Instances/Entities/Player.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Sprites/DiretionIndicator.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/dirline.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Sprites/bubble.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Audio/ContinuousBubbles1.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Audio/BubbleJet.wav" type="AudioStream" id=6]
@@ -62,10 +62,9 @@ enabled = true
 cast_to = Vector2( 0, 48 )
 
 [node name="DirectionIndicatorPivot" type="Node2D" parent="."]
-visible = false
 
 [node name="DirectionIndicator" type="Sprite" parent="DirectionIndicatorPivot"]
-position = Vector2( -32, 32 )
+position = Vector2( -2, 32 )
 texture = ExtResource( 3 )
 centered = false
 
